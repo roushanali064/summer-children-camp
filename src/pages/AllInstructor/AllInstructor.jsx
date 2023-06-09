@@ -1,13 +1,12 @@
-import useInstructor from "../../../hooks/useInstructor";
-import InstructorCard from "../../../components/InstructorCard";
+import InstructorCard from "../../components/InstructorCard";
+import useInstructor from "../../hooks/useInstructor";
 
 
-const Instructor = () => {
+const AllInstructor = () => {
     const[instructor]=useInstructor();
-    console.log(instructor)
     return (
         <div>
-            <h2 className="text-transparent text-5xl font-extrabold bg-gradient-to-r from-[#FF8A00] to-[#FFC000] bg-clip-text text-center">Our Popular Instructor</h2>
+             <h2 className="text-transparent text-5xl font-extrabold bg-gradient-to-r from-[#FF8A00] to-[#FFC000] bg-clip-text text-center">See All Instructor</h2>
             <div className="flex flex-col justify-center items-center md:grid md:grid-cols-3 gap-5 mt-12">
             {
                 instructor.slice(0,6).map(item=><InstructorCard
@@ -20,4 +19,4 @@ const Instructor = () => {
     );
 };
 
-export default Instructor;
+export default AllInstructor;
