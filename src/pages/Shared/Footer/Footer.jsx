@@ -2,10 +2,10 @@ import logo from '../../../assets/logo.webp'
 
 const Footer = () => {
     return (
-        <footer className="footer p-10 bg-base-200 text-base-content">
+        <footer className="footer p-10 bg-[#212121] text-white">
             <div>
                 <img src={logo} alt="" />
-                <p>ACME Industries Ltd.<br />Providing reliable tech since 1992</p>
+                <p className='text-xl font-bold'>Summer Children Camp.<br />Providing reliable tech since 2023</p>
             </div>
             <div>
                 <span className="footer-title">Services</span>
