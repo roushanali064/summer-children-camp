@@ -20,7 +20,7 @@ const Classes = () => {
             {/* card */}
             <div className="md:grid flex flex-col justify-center items-center md:grid-cols-3 mt-[50px] gap-5">
                 {
-                    classes.map(singleClass=><ClassesCard
+                    classes.slice(0,6).map(singleClass=><ClassesCard
                     key={singleClass._id}
                     singleClass={singleClass}
                     ></ClassesCard>)
