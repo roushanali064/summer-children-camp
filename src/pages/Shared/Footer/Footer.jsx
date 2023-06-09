@@ -2,7 +2,7 @@ import logo from '../../../assets/logo.webp'
 
 const Footer = () => {
     return (
-        <footer className="footer p-10 bg-[#212121] text-white">
+        <footer className="footer p-10 bg-[#212121] text-white mt-[100px]">
             <div>
                 <img src={logo} alt="" />
                 <p className='text-xl font-bold'>Summer Children Camp.<br />Providing reliable tech since 2023</p>
