@@ -13,6 +13,10 @@ import AllInstructor from "../pages/AllInstructor/AllInstructor";
           {
             path: '/',
             element: <Home></Home>
+          },
+          {
+            path: 'instructor',
+            element: <AllInstructor></AllInstructor>
           }
         ]
     }
