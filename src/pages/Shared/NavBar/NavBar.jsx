@@ -30,7 +30,7 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to='/'>
+                    <Link to='/login'>
                         <button className="btn gap-2 mr-4">
                             login
                         </button>
