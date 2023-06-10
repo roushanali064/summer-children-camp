@@ -9,7 +9,7 @@ const PrivateRoutes = ({children}) => {
     const location = useLocation();
     if (loading) {
         return <>
-            <div className="flex justify-center items-center h-full w-full">
+            <div className="flex justify-center items-center h-full w-full pt-24">
                 <img src={loadingImg} alt="" />
             </div>
         </>

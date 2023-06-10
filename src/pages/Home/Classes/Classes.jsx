@@ -1,18 +1,9 @@
-import { useEffect } from "react";
-import { useState } from "react";
 import ClassesCard from "./ClassesCard";
+import useClasses from "../../../hooks/useClasses";
 
 
 const Classes = () => {
-    const [classes,setClasses]=useState([]);
-    useEffect(()=>{
-        fetch('http://localhost:5000/classes')
-        .then(res=>res.json())
-        .then(data=>{
-            console.log(data)
-            setClasses(data)
-        })
-    },[])
+    const [classes] = useClasses();
 
     return (
         <div className="my-[100px]">
