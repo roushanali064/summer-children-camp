@@ -1,4 +1,4 @@
-# Summer Children Camp - Dance Academy
+# ![Logo](/src/assets/logo.webp) Summer Children Camp - Dance Academy
 
 ## Description
 
