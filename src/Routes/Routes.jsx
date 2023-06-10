@@ -9,6 +9,7 @@ import SignUp from "../pages/Authintication/SignUp";
 import NotFound from "../pages/NotFound";
 import DashBoard from "../pages/DashBoard/DashBoard/DashBoard";
 import PrivateRoutes from "./PrivateRoutes";
+import AllClasses from "../pages/AllClasses/AllClasses";
 
   export const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ import PrivateRoutes from "./PrivateRoutes";
           {
             path: 'instructor',
             element: <AllInstructor></AllInstructor>
+          },
+          {
+            path: '/allclasses',
+            element: <AllClasses></AllClasses>
           },
           {
             path: '/dashboard',

@@ -1,10 +1,10 @@
-import ClassesCard from "./ClassesCard";
+import ClassesCard from "../../../components/ClassesCard";
 import useClasses from "../../../hooks/useClasses";
 
 
 const Classes = () => {
     const [classes] = useClasses();
-
+    
     return (
         <div className="my-[100px]">
             <h2 className="text-transparent text-5xl font-extrabold bg-gradient-to-r from-[#FF8A00] to-[#FFC000] bg-clip-text text-center">Our Popular class</h2>

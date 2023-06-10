@@ -4,7 +4,7 @@ import InstructorCard from "../../../components/InstructorCard";
 
 const Instructor = () => {
     const[instructor]=useInstructor();
-    console.log(instructor)
+    
     return (
         <div>
             <h2 className="text-transparent text-5xl font-extrabold bg-gradient-to-r from-[#FF8A00] to-[#FFC000] bg-clip-text text-center">Our Popular Instructor</h2>
