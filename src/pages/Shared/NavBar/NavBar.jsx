@@ -1,9 +1,27 @@
 import { Link } from "react-router-dom";
 import logo from '../../../assets/logo.webp'
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const NavBar = () => {
+    const { user,logOut } = useContext(AuthContext)
 
-    const navOptions=<>
+    const handleLogout = () => {
+        logOut()
+        .then(()=>{
+            Swal.fire(
+                'Account Create SuccessFuly!',
+                'You clicked the button!',
+                'success'
+            )
+        })
+        .catch(err=>{
+            console.error(err.message)
+        })
+    }
+
+    const navOptions = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/instructor'>Instructors</Link></li>
         <li><Link to='/'>Classes</Link></li>
@@ -12,7 +30,7 @@ const NavBar = () => {
 
     return (
         <>
-        <div className="navbar fixed z-10 bg-[#15151580]  text-white max-w-screen-xl py-4">
+            <div className="navbar fixed z-10 bg-[#15151580]  text-white max-w-screen-xl py-4">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -30,12 +48,23 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to='/login'>
-                        <button className="btn gap-2 mr-4">
-                            login
-                        </button>
-                    </Link>
-                    {/* {user ? <><h3 className="text-2xl font-bold mr-5">{user?.displayName}</h3> <button onClick={handleLogout} className="btn">Log Out</button></> : <Link className="btn" to='/login'>Login</Link>} */}
+
+                    {user ? <>
+                        <button onClick={handleLogout} className="btn mr-4 bg-gradient-to-r from-[#FFC000] to-[#FF8A00] border-none">Log Out</button>
+                        <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
+                            <div className="avatar mr-10">
+                                <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 ">
+                                    <img src={user?.photoURL} />
+                                </div>
+                            </div>
+                        </div>
+                    </> :
+                        <Link to='/login'>
+                            <button className="btn gap-2 mr-4 bg-gradient-to-r from-[#FFC000] to-[#FF8A00] border-none text-white">
+                                login
+                            </button>
+                        </Link>
+                    }
                 </div>
             </div>
         </>

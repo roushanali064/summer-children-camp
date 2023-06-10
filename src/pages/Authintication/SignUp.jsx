@@ -90,7 +90,7 @@ const SignUp = () => {
                                 {errors.password?.type === 'pattern' && <p className="text-red-600">Password must one uppercase, and on lower case, and one number and special character.</p>}
                             </div>
                             <div className="form-control mt-6">
-                                <input className="btn bg-gradient-to-r from-[#FFC000] to-[#FF8A00] border-none" type="submit" value="Sign Up" />
+                                <input className="btn bg-gradient-to-r from-[#FFC000] to-[#FF8A00] border-none text-white" type="submit" value="Sign Up" />
                             </div>
                         </form>
                         <p className='text-[#D1A054] pb-4 text-center text-xl'>Already registered? <Link to='/login'>Go to log in</Link></p>
