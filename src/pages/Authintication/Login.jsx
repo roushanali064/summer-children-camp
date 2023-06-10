@@ -2,16 +2,30 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import loginIng from '../../assets/login.jpg'
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../Shared/Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 
 
 const Login = () => {
+    const {loginUser}=useContext(AuthContext)
     const [show, SetShow] = useState(false)
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)
+        loginUser(data.email,data.password)
+        .then(()=>{
+            Swal.fire(
+                'Login Successfully!',
+                'You clicked the button!',
+                'success'
+            )
+        })
+        .catch(err=>{
+            console.error(err.message)
+        })
     };
     return (
         <div className="hero min-h-screen pt-16">

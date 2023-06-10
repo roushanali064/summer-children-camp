@@ -9,16 +9,25 @@ const SignUp = () => {
     const { CreateUserWithEmail, updateUserProfile } = useContext(AuthContext)
     const navigate = useNavigate()
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit,reset, formState: { errors } } = useForm();
 
     const onSubmit = data => {
+        if (data.ConfirmPassword !== data.password) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: "Password and Confirm Password didn't match!",
+            })
+            return
+        }
         console.log(data)
         CreateUserWithEmail(data.email, data.password)
             .then(() => {
                 updateUserProfile(data.name, data.url)
                     .then(() => {
+                        reset()
                         Swal.fire(
-                            'Account Create SuccessFuly!',
+                            'Account Create Successfully!',
                             'You clicked the button!',
                             'success'
                         )
@@ -90,6 +99,23 @@ const SignUp = () => {
                                 {errors.password && <span className="text-red-600">Password field is required</span>}
                                 {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be six character .</p>}
                                 {errors.password?.type === 'pattern' && <p className="text-red-600">Password must one uppercase, and on lower case, and one number and special character.</p>}
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Confirm Password</span>
+                                </label>
+                                <input type="password"
+                                    name="ConfirmPassword"
+                                    placeholder="Enter your password" className="input input-bordered"
+                                    {...register("ConfirmPassword", {
+                                        required: true,
+                                        minLength: 6,
+                                        pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                                    })}
+                                />
+                                {errors.ConfirmPassword && <span className="text-red-600">Confirm Password field is required</span>}
+                                {errors.ConfirmPassword?.type === 'minLength' && <p className="text-red-600">Password must be six character .</p>}
+                                {errors.ConfirmPassword?.type === 'pattern' && <p className="text-red-600">Password must one uppercase, and on lower case, and one number and special character.</p>}
                             </div>
                             <div className="form-control mt-6">
                                 <input className="btn bg-gradient-to-r from-[#FFC000] to-[#FF8A00] border-none text-white" type="submit" value="Sign Up" />
