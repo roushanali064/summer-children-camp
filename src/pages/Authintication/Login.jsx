@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import loginIng from '../../assets/login.jpg'
 
 
 const Login = () => {
@@ -10,10 +11,10 @@ const Login = () => {
     return (
         <div className="hero min-h-screen pt-40">
             <div className="hero-content flex-col lg:flex-row-reverse">
-                <div className="text-center lg:text-left md:w-1/2">
-                    {/* <img src={img} alt="" /> */}
+                <div className="text-center  md:w-1/2">
+                    <img src={loginIng} alt="" />
                 </div>
-                <div className="card flex-shrink-0  max-w-sm shadow-2xl bg-base-100 md:w-1/2 pt-4">
+                <div className="card flex-shrink-0  max-w-sm shadow-2xl bg-base-100 md:w-1/2  pt-4">
                     <h1 className="text-4xl font-bold text-center">Sign Up</h1>
                     <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                         <div className="form-control">
