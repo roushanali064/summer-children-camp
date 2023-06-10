@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginIng from '../../assets/login.jpg'
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useContext, useState } from "react";
@@ -9,23 +9,28 @@ import Swal from "sweetalert2";
 
 
 const Login = () => {
-    const {loginUser}=useContext(AuthContext)
+    const { loginUser } = useContext(AuthContext)
     const [show, SetShow] = useState(false)
+    const navigate = useNavigate();
+    const location = useLocation();
+    const form = location.state?.from?.pathname || "/"
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)
-        loginUser(data.email,data.password)
-        .then(()=>{
-            Swal.fire(
-                'Login Successfully!',
-                'You clicked the button!',
-                'success'
-            )
-        })
-        .catch(err=>{
-            console.error(err.message)
-        })
+        loginUser(data.email, data.password)
+            .then(() => {
+                Swal.fire(
+                    'Login Successfully!',
+                    'You clicked the button!',
+                    'success'
+                )
+                reset()
+                navigate(form, { replace: true });
+            })
+            .catch(err => {
+                console.error(err.message)
+            })
     };
     return (
         <div className="hero min-h-screen pt-16">
@@ -60,7 +65,7 @@ const Login = () => {
 
                         </div>
                         <div className="form-control mt-6">
-                            <input className="btn bg-gradient-to-r from-[#FFC000] to-[#FF8A00] border-none text-white" type="submit" value="Sign Up" />
+                            <input className="btn bg-gradient-to-r from-[#FFC000] to-[#FF8A00] border-none text-white" type="submit" value="Login" />
                         </div>
                     </form>
                     <button onClick={() => SetShow(!show)} className="absolute right-10 top-[230px] text-xl">
