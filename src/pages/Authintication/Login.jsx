@@ -37,13 +37,9 @@ const Login = () => {
                                 placeholder="Enter your password" className="input input-bordered"
                                 {...register("password", {
                                     required: true,
-                                    minLength: 6,
-                                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
                                 })}
                             />
                             {errors.password && <span className="text-red-600">Password field is required</span>}
-                            {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be six character .</p>}
-                            {errors.password?.type === 'pattern' && <p className="text-red-600">Password must one uppercase, and on lower case, and one number and special character.</p>}
                         </div>
                         <div className="form-control mt-6">
                             <input className="btn bg-gradient-to-r from-[#FFC000] to-[#FF8A00] border-none" type="submit" value="Sign Up" />

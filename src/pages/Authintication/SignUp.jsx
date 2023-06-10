@@ -1,11 +1,35 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import loginIng from '../../assets/login.jpg'
+import { useContext } from "react";
+import { AuthContext } from "../Shared/Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
-    const { register, handleSubmit,  formState: { errors } } = useForm();
+    const { CreateUserWithEmail,updateUserProfile } = useContext(AuthContext)
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
     const onSubmit = data => {
         console.log(data)
+        CreateUserWithEmail(data.email, data.password)
+        .then(() => {
+            updateUserProfile(data.name, data.url)
+                .then(() => {
+                    Swal.fire(
+                        'Account Create SuccessFuly!',
+                        'You clicked the button!',
+                        'success'
+                    )
+                })
+                .catch(error => {
+                    console.error(error)
+                })
+       })
+       .catch(error => {
+           console.log(error)
+       })
+
     };
     return (
         <div>
@@ -17,6 +41,17 @@ const SignUp = () => {
                     <div className="card flex-shrink-0  max-w-sm shadow-2xl bg-base-100 md:w-1/2 pt-4">
                         <h1 className="text-4xl font-bold text-center">Sign Up</h1>
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Your Photo URL</span>
+                                </label>
+                                <input type="url"
+                                    name="url"
+                                    placeholder="Photo Url" className="input input-bordered"
+                                    {...register("url", { required: true })}
+                                />
+                                {errors.url && <span className="text-red-600">URL field is required</span>}
+                            </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Name</span>
