@@ -1,12 +1,15 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import loginIng from '../../assets/login.jpg'
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useState } from "react";
 
 
 
 const Login = () => {
-    
-    const { register, handleSubmit,  formState: { errors } } = useForm();
+    const [show, SetShow] = useState(false)
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)
     };
@@ -28,25 +31,29 @@ const Login = () => {
                                 placeholder="example@email.com" className="input input-bordered" {...register("email", { required: true })} />
                             {errors.email && <span className="text-red-600">email field is required</span>}
                         </div>
-                        <div className="form-control">
+                        <div className="form-control relative">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password"
+                            <input type={show ? 'text' : 'password'}
                                 name="password"
-                                placeholder="Enter your password" className="input input-bordered"
+                                placeholder="Enter your password" className="input input-bordered "
                                 {...register("password", {
                                     required: true,
                                 })}
                             />
                             {errors.password && <span className="text-red-600">Password field is required</span>}
+
                         </div>
                         <div className="form-control mt-6">
                             <input className="btn bg-gradient-to-r from-[#FFC000] to-[#FF8A00] border-none text-white" type="submit" value="Sign Up" />
                         </div>
                     </form>
+                    <button onClick={() => SetShow(!show)} className="absolute right-10 top-[230px] text-xl">
+                        {show ? <FaEyeSlash /> : <FaEye />}
+                    </button>
                     <p className='text-[#D1A054] pb-4 text-center text-xl'>Already registered? <Link to='/signup'>Go to Sign Up</Link></p>
-                    
+
                 </div>
             </div>
         </div>

@@ -1,34 +1,36 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginIng from '../../assets/login.jpg'
 import { useContext } from "react";
 import { AuthContext } from "../Shared/Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const SignUp = () => {
-    const { CreateUserWithEmail,updateUserProfile } = useContext(AuthContext)
+    const { CreateUserWithEmail, updateUserProfile } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = data => {
         console.log(data)
         CreateUserWithEmail(data.email, data.password)
-        .then(() => {
-            updateUserProfile(data.name, data.url)
-                .then(() => {
-                    Swal.fire(
-                        'Account Create SuccessFuly!',
-                        'You clicked the button!',
-                        'success'
-                    )
-                })
-                .catch(error => {
-                    console.error(error)
-                })
-       })
-       .catch(error => {
-           console.log(error)
-       })
+            .then(() => {
+                updateUserProfile(data.name, data.url)
+                    .then(() => {
+                        Swal.fire(
+                            'Account Create SuccessFuly!',
+                            'You clicked the button!',
+                            'success'
+                        )
+                        navigate('/')
+                    })
+                    .catch(error => {
+                        console.error(error)
+                    })
+            })
+            .catch(error => {
+                console.log(error)
+            })
 
     };
     return (

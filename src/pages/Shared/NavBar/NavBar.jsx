@@ -11,7 +11,7 @@ const NavBar = () => {
         logOut()
         .then(()=>{
             Swal.fire(
-                'Account Create SuccessFuly!',
+                'Logout  Successfully!',
                 'You clicked the button!',
                 'success'
             )
