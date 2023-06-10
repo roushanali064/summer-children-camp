@@ -4,6 +4,7 @@ import loginIng from '../../assets/login.jpg'
 import { useContext } from "react";
 import { AuthContext } from "../Shared/Provider/AuthProvider";
 import Swal from "sweetalert2";
+import SocialLogin from "./SocialLogin";
 
 const SignUp = () => {
     const { CreateUserWithEmail, updateUserProfile } = useContext(AuthContext)
@@ -122,7 +123,7 @@ const SignUp = () => {
                             </div>
                         </form>
                         <p className='text-[#D1A054] pb-4 text-center text-xl'>Already registered? <Link to='/login'>Go to log in</Link></p>
-
+                        <SocialLogin/>
                     </div>
                 </div>
             </div>

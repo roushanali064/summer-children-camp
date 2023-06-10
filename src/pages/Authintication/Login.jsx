@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { AuthContext } from "../Shared/Provider/AuthProvider";
 import Swal from "sweetalert2";
+import SocialLogin from "./SocialLogin";
 
 
 
@@ -72,7 +73,7 @@ const Login = () => {
                         {show ? <FaEyeSlash /> : <FaEye />}
                     </button>
                     <p className='text-[#D1A054] pb-4 text-center text-xl'>Already registered? <Link to='/signup'>Go to Sign Up</Link></p>
-
+                    <SocialLogin/>
                 </div>
             </div>
         </div>
