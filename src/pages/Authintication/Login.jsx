@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import loginIng from '../../assets/login.jpg'
 
 
+
 const Login = () => {
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    
+    const { register, handleSubmit,  formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)
     };
