@@ -6,6 +6,7 @@ import Home from "../pages/Home/Home/Home";
 import AllInstructor from "../pages/AllInstructor/AllInstructor";
 import Login from "../pages/Authintication/Login";
 import SignUp from "../pages/Authintication/SignUp";
+import NotFound from "../pages/NotFound";
 
   export const router = createBrowserRouter([
     {
@@ -29,5 +30,9 @@ import SignUp from "../pages/Authintication/SignUp";
             element: <AllInstructor></AllInstructor>
           }
         ]
+    },
+    {
+      path: '*',
+      element: <NotFound></NotFound>
     }
   ])

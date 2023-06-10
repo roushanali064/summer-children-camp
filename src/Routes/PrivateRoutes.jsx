@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../pages/Shared/Provider/AuthProvider";
 import { Navigate, useLocation } from "react-router-dom";
+import loadingImg from '../assets/loading.gif'
 
 
 const PrivateRoutes = ({children}) => {
@@ -9,7 +10,7 @@ const PrivateRoutes = ({children}) => {
     if (loading) {
         return <>
             <div className="flex justify-center items-center h-full w-full">
-                {/* <img src={loadingImg} alt="" /> */}
+                <img src={loadingImg} alt="" />
             </div>
         </>
     }
