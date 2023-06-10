@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-
+import loginIng from '../../assets/login.jpg'
 
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -9,10 +9,10 @@ const SignUp = () => {
     };
     return (
         <div>
-            <div className="hero min-h-screen">
+            <div className="hero min-h-screen pt-16">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left md:w-1/2">
-                        {/* <img src={img} alt="" /> */}
+                        <img src={loginIng} alt="" />
                     </div>
                     <div className="card flex-shrink-0  max-w-sm shadow-2xl bg-base-100 md:w-1/2 pt-4">
                         <h1 className="text-4xl font-bold text-center">Sign Up</h1>
@@ -55,7 +55,7 @@ const SignUp = () => {
                                 {errors.password?.type === 'pattern' && <p className="text-red-600">Password must one uppercase, and on lower case, and one number and special character.</p>}
                             </div>
                             <div className="form-control mt-6">
-                                <input className="btn bg-[#D1A054] border-none" type="submit" value="Sign Up" />
+                                <input className="btn bg-gradient-to-r from-[#FFC000] to-[#FF8A00] border-none" type="submit" value="Sign Up" />
                             </div>
                         </form>
                         <p className='text-[#D1A054] pb-4 text-center text-xl'>Already registered? <Link to='/login'>Go to log in</Link></p>
