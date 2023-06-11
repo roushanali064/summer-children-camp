@@ -38,10 +38,10 @@ const DashBoard = () => {
                                     isActive ? "text-white bg-transparent " : ""
                                 }>Manage Classes</NavLink></li>
                             <li><NavLink
-                                to=''
+                                to='/dashboard/manageusers'
                                 className={({ isActive }) =>
                                     isActive ? "text-white bg-transparent " : ""
-                                }>My Class</NavLink></li>
+                                }>Manage Users</NavLink></li>
                             </> : 
                             <>
                             
