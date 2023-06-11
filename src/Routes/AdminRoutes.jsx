@@ -1,16 +1,15 @@
 import { useContext } from "react";
-import { AuthContext } from "../pages/Shared/Provider/AuthProvider";
 import { Navigate, useLocation } from "react-router-dom";
-import loadingImg from '../assets/loading.gif'
+import { AuthContext } from "../pages/Shared/Provider/AuthProvider";
 import useUser from "../hooks/useUser";
+import loadingImg from '../assets/loading.gif'
 
 
-
-const InstructorRoutes = ({children}) => {
+const AdminRoutes = ({children}) => {
     const { user, loading } = useContext(AuthContext);
     const location = useLocation();
     const [userType, userLoading] = useUser();
-    const isInstructor = userType?.role === 'instructor'
+    const isAdmin = userType?.role === 'admin'
     
     if (loading || userLoading) {
         return <>
@@ -20,7 +19,7 @@ const InstructorRoutes = ({children}) => {
         </>
     }
 
-    if (user && isInstructor) {
+    if (user && isAdmin) {
         return children
     }
 
@@ -28,4 +27,4 @@ const InstructorRoutes = ({children}) => {
     return  <Navigate to='/login' state={{ from: location }} replace></Navigate>
 };
 
-export default InstructorRoutes;
+export default AdminRoutes;

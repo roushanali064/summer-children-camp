@@ -5,6 +5,7 @@ import useUser from "../../../hooks/useUser";
 const DashBoard = () => {
     const [userType] = useUser();
     const isInstructor = userType?.role === 'instructor'
+    const isAdmin = userType?.role === 'admin'
 
     return (
         <div className="drawer lg:drawer-open pt-24">
@@ -16,7 +17,7 @@ const DashBoard = () => {
             </div>
             <div className="drawer-side ">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 h-full bg-gradient-to-r from-[#FFC000] to-[#FF8A00]  text-white text-xl font-bold">
+                <ul className="menu p-4 w-76 h-full bg-gradient-to-r from-[#FFC000] to-[#FF8A00]  text-white text-xl font-bold">
                     {
                         isInstructor ? <>
                             <li><NavLink
@@ -29,8 +30,21 @@ const DashBoard = () => {
                                 className={({ isActive }) =>
                                     isActive ? "text-white bg-transparent " : ""
                                 }>My Class</NavLink></li>
-                        </> :
+                        </> : isAdmin ? 
                             <>
+                            <li><NavLink
+                                to='/dashboard/manageclasses'
+                                className={({ isActive }) =>
+                                    isActive ? "text-white bg-transparent " : ""
+                                }>Manage Classes</NavLink></li>
+                            <li><NavLink
+                                to=''
+                                className={({ isActive }) =>
+                                    isActive ? "text-white bg-transparent " : ""
+                                }>My Class</NavLink></li>
+                            </> : 
+                            <>
+                            
                             </>
                     }
 

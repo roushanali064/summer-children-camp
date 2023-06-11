@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const useUser = () => {
     const {user}=useContext(AuthContext)
-    const {data: userType={}, isLoading: instructorLoading}=useQuery({
+    const {data: userType={}, isLoading: userLoading}=useQuery({
         queryKey: ['userType',user?.email],
         queryFn: async ()=>{
             const res = await fetch(`http://localhost:5000/user/${user?.email}`)
@@ -13,7 +13,7 @@ const useUser = () => {
             return result
         }
     });
-    return [userType,instructorLoading]
+    return [userType,userLoading]
 };
 
 export default useUser;
