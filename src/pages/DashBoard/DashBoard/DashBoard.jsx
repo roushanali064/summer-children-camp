@@ -15,6 +15,7 @@ const DashBoard = () => {
                 <ul className="menu p-4 w-80 h-full bg-gradient-to-r from-[#FFC000] to-[#FF8A00]  text-white text-xl font-bold">
                     {/* Sidebar content here */}
                     <li><NavLink
+                        to='/dashboard/addclass'
                         className={({ isActive }) =>
                             isActive ? "text-white bg-transparent " : ""
                         }>Add Class</NavLink></li>

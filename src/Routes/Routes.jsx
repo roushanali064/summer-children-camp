@@ -10,6 +10,7 @@ import NotFound from "../pages/NotFound";
 import DashBoard from "../pages/DashBoard/DashBoard/DashBoard";
 import PrivateRoutes from "./PrivateRoutes";
 import AllClasses from "../pages/AllClasses/AllClasses";
+import AddClass from "../pages/DashBoard/AddClass/AddClass";
 
   export const router = createBrowserRouter([
     {
@@ -38,7 +39,13 @@ import AllClasses from "../pages/AllClasses/AllClasses";
           },
           {
             path: '/dashboard',
-            element: <PrivateRoutes><DashBoard></DashBoard></PrivateRoutes>
+            element: <PrivateRoutes><DashBoard></DashBoard></PrivateRoutes>,
+            children:[
+              {
+                path: 'addclass',
+                element: <AddClass></AddClass>
+              }
+            ]
           }
         ]
     },
