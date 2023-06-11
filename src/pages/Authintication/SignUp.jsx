@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Shared/Provider/AuthProvider";
 import Swal from "sweetalert2";
 import SocialLogin from "./SocialLogin";
+import axios from "axios";
 
 const SignUp = () => {
     const { CreateUserWithEmail, updateUserProfile } = useContext(AuthContext)
@@ -26,6 +27,13 @@ const SignUp = () => {
             .then(() => {
                 updateUserProfile(data.name, data.url)
                     .then(() => {
+                        const savedUser = {
+                            name: data.name,
+                            email: data.email,
+                            image: data.url,
+                            role: 'student'
+                        }
+                        axios.post('http://localhost:5000/user',{savedUser})
                         reset()
                         Swal.fire(
                             'Account Create Successfully!',

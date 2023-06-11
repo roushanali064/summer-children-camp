@@ -11,6 +11,8 @@ import DashBoard from "../pages/DashBoard/DashBoard/DashBoard";
 import PrivateRoutes from "./PrivateRoutes";
 import AllClasses from "../pages/AllClasses/AllClasses";
 import AddClass from "../pages/DashBoard/AddClass/AddClass";
+import InstructorClasses from "../pages/DashBoard/InstructorClasses/InstructorClasses";
+import InstructorRoutes from "./InstructorRoutes";
 
   export const router = createBrowserRouter([
     {
@@ -43,7 +45,11 @@ import AddClass from "../pages/DashBoard/AddClass/AddClass";
             children:[
               {
                 path: 'addclass',
-                element: <AddClass></AddClass>
+                element: <InstructorRoutes><AddClass></AddClass></InstructorRoutes>
+              },
+              {
+                path: 'instructorclasses',
+                element: <InstructorRoutes><InstructorClasses></InstructorClasses></InstructorRoutes>
               }
             ]
           }

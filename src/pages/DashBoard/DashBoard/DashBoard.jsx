@@ -1,7 +1,11 @@
 import { NavLink, Outlet } from "react-router-dom";
+import useUser from "../../../hooks/useUser";
 
 
 const DashBoard = () => {
+    const [userType] = useUser();
+    const isInstructor = userType?.role === 'instructor'
+
     return (
         <div className="drawer lg:drawer-open pt-24">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -13,16 +17,23 @@ const DashBoard = () => {
             <div className="drawer-side ">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 h-full bg-gradient-to-r from-[#FFC000] to-[#FF8A00]  text-white text-xl font-bold">
-                    {/* Sidebar content here */}
-                    <li><NavLink
-                        to='/dashboard/addclass'
-                        className={({ isActive }) =>
-                            isActive ? "text-white bg-transparent " : ""
-                        }>Add Class</NavLink></li>
-                    <li><NavLink
-                        className={({ isActive }) =>
-                            isActive ? "text-white bg-transparent " : ""
-                        }>My Class</NavLink></li>
+                    {
+                        isInstructor ? <>
+                            <li><NavLink
+                                to='/dashboard/addclass'
+                                className={({ isActive }) =>
+                                    isActive ? "text-white bg-transparent " : ""
+                                }>Add Class</NavLink></li>
+                            <li><NavLink
+                                to='/dashboard/instructorclasses'
+                                className={({ isActive }) =>
+                                    isActive ? "text-white bg-transparent " : ""
+                                }>My Class</NavLink></li>
+                        </> :
+                            <>
+                            </>
+                    }
+
                 </ul>
 
             </div>

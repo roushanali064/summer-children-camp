@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Shared/Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { FaGoogle } from "react-icons/fa";
+import axios from "axios";
 
 
 const SocialLogin = () => {
@@ -13,7 +14,15 @@ const SocialLogin = () => {
 
     const handleGoogleLogin=()=>{
         googleLogin()
-            .then(() => {
+            .then(res => {
+                const loggedUser=res.user;
+                const savedUser = {
+                    name: loggedUser?.displayName,
+                    email: loggedUser?.email,
+                    image: loggedUser?.photoURL,
+                    role: 'student'
+                }
+                axios.post('http://localhost:5000/user',{savedUser})
                 Swal.fire(
                     'Login Successfully!',
                     'You clicked the button!',
