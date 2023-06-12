@@ -91,6 +91,8 @@ const CheckoutForm = ({price, bookedClass}) => {
         .then(res=>{
           if(res.data.insertedId){
             axios.delete(`https://summer-children-camp-server.vercel.app/booked/class/${bookedClass._id}`)
+            const availableSeats = bookedClass?.availableSeats-1;
+            axios.patch(`http://localhost:5000/update/seats/${bookedClass.id}`,{availableSeats})
             Swal.fire(
               'Payment Successfully!',
               'You clicked the button!',

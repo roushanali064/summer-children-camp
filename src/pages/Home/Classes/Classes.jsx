@@ -28,6 +28,7 @@ const Classes = () => {
             price: item.price,
             image: item.image,
             instructor: item.instructor,
+            availableSeats: item?.availableSeats
         }
         console.log(data)
         
