@@ -13,7 +13,7 @@ const CheckoutForm = ({price, bookedClass}) => {
     console.log(bookedClass)
 
     useEffect(()=>{
-      axios.post('http://localhost:5000/create-payment-intent',{price})
+      axios.post('https://summer-children-camp-server.vercel.app/create-payment-intent',{price})
       .then(res=>{
         console.log(res.data?.clientSecret)
         setClientSecret(res.data?.clientSecret)
@@ -87,9 +87,10 @@ const CheckoutForm = ({price, bookedClass}) => {
           price,
           name: bookedClass.name,
         }
-        axios.post('http://localhost:5000/payments',payment)
+        axios.post('https://summer-children-camp-server.vercel.app/payments',payment)
         .then(res=>{
           if(res.data.insertedId){
+            axios.delete(`https://summer-children-camp-server.vercel.app/booked/class/${bookedClass._id}`)
             Swal.fire(
               'Payment Successfully!',
               'You clicked the button!',

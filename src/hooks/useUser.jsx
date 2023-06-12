@@ -8,7 +8,7 @@ const useUser = () => {
     const {data: userType={}, isLoading: userLoading}=useQuery({
         queryKey: ['userType',user?.email],
         queryFn: async ()=>{
-            const res = await fetch(`http://localhost:5000/user/${user?.email}`)
+            const res = await fetch(`https://summer-children-camp-server.vercel.app/user/${user?.email}`)
             const result = await res.json()
             return result
         }

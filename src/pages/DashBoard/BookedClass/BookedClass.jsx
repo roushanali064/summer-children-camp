@@ -13,14 +13,14 @@ const BookedClass = () => {
     const {data:BookedClasses=[], refetch} = useQuery({
         queryKey: ['BookedClasses', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/booked/class/${user?.email}`)
+            const res = await fetch(`https://summer-children-camp-server.vercel.app/booked/class/${user?.email}`)
             return res.json()
         }
     })
 
     const handleDelete = id =>{
         console.log(id)
-        axios.delete(`http://localhost:5000/booked/class/${id}`)
+        axios.delete(`https://summer-children-camp-server.vercel.app/booked/class/${id}`)
         .then(res=>{
             refetch()
             if(res.data.deletedCount === 1){

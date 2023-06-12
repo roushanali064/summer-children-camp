@@ -11,7 +11,7 @@ const ManageClasses = () => {
     const handleApproved = id => {
         console.log(id)
         const status = { status: 'approved' }
-        axios.put(`http://localhost:5000/status/${id}`, status)
+        axios.put(`https://summer-children-camp-server.vercel.app/status/${id}`, status)
             .then(data => {
                 refetch()
                 if (data.data.modifiedCount > 0) {
@@ -30,7 +30,7 @@ const ManageClasses = () => {
     const handleDeny = id => {
         console.log(id)
         const status = { status: 'deny' }
-        axios.put(`http://localhost:5000/status/deny/${id}`, status)
+        axios.put(`https://summer-children-camp-server.vercel.app/status/deny/${id}`, status)
             .then(data => {
                 refetch()
                 if (data.data.modifiedCount > 0) {
@@ -49,7 +49,7 @@ const ManageClasses = () => {
     const handleFeedback = e => {
         const feedback = {feedback: e.target.feedback.value}
         
-        axios.patch(`http://localhost:5000/feedback/${id}`, feedback)
+        axios.patch(`https://summer-children-camp-server.vercel.app/feedback/${id}`, feedback)
             .then(data => {
                 refetch()
                 if (data.data.modifiedCount > 0) {

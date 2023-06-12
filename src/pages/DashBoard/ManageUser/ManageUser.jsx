@@ -10,7 +10,7 @@ const ManageUser = () => {
     const handleInstructor = id =>{
         
         const role = {role: 'instructor'}
-        axios.put(`http://localhost:5000/user/${id}`,role)
+        axios.put(`https://summer-children-camp-server.vercel.app/user/${id}`,role)
         .then(data => {
             refetch()
             if (data.data.modifiedCount > 0) {
@@ -29,7 +29,7 @@ const ManageUser = () => {
     const handleAdmin = id =>{
         
         const role = {role: 'admin'}
-        axios.put(`http://localhost:5000/user/${id}`,role)
+        axios.put(`https://summer-children-camp-server.vercel.app/user/${id}`,role)
          .then(data => {
              refetch()
              if (data.data.modifiedCount > 0) {

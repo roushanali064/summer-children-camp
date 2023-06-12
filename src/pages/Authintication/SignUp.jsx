@@ -33,7 +33,7 @@ const SignUp = () => {
                             image: data.url,
                             role: 'student'
                         }
-                        axios.post('http://localhost:5000/user',{savedUser})
+                        axios.post('https://summer-children-camp-server.vercel.app/user',{savedUser})
                         reset()
                         Swal.fire(
                             'Account Create Successfully!',

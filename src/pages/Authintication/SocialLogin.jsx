@@ -22,7 +22,7 @@ const SocialLogin = () => {
                     image: loggedUser?.photoURL,
                     role: 'student'
                 }
-                axios.post('http://localhost:5000/user',{savedUser})
+                axios.post('https://summer-children-camp-server.vercel.app/user',{savedUser})
                 Swal.fire(
                     'Login Successfully!',
                     'You clicked the button!',

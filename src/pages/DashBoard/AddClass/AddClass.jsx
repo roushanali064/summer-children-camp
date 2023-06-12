@@ -20,7 +20,7 @@ const AddClass = () => {
             status: 'pending',
             enrolled: 0
         }
-        axios.post('http://localhost:5000/class',{newClass})
+        axios.post('https://summer-children-camp-server.vercel.app/class',{newClass})
         .then(res=>{
             if(res?.data.acknowledged){
                 Swal.fire(
