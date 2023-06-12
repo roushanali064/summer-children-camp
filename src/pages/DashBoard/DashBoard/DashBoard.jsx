@@ -44,7 +44,16 @@ const DashBoard = () => {
                                 }>Manage Users</NavLink></li>
                             </> : 
                             <>
-                            
+                            <li><NavLink
+                                to='/dashboard/bookedclass'
+                                className={({ isActive }) =>
+                                    isActive ? "text-white bg-transparent " : ""
+                                }>My Selected Classes</NavLink></li>
+                            <li><NavLink
+                                to='/dashboard/manageusers'
+                                className={({ isActive }) =>
+                                    isActive ? "text-white bg-transparent " : ""
+                                }>Manage Users</NavLink></li>
                             </>
                     }
 

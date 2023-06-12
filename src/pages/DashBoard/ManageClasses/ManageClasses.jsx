@@ -70,7 +70,7 @@ const ManageClasses = () => {
     return (
         <div className="bg-[#FFF7DF] pt-2 pb-2 rounded">
             <h2 className="text-transparent text-5xl font-extrabold bg-gradient-to-r from-[#FF8A00] to-[#FFC000] bg-clip-text text-center pb-2">Manage Classes</h2>
-            {/* Open the modal using ID.showModal() method */}
+            
 
             <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
                 <form onSubmit={handleFeedback} method="dialog" className="modal-box">
@@ -84,7 +84,7 @@ const ManageClasses = () => {
 
                     <p className="py-4">Press ESC key or click the button below to close</p>
                     <div className="modal-action">
-                        {/* if there is a button in form, it will close the modal */}
+                        
                         <button className="btn">Close</button>
                     </div>
                 </form>

@@ -72,7 +72,7 @@ const Login = () => {
                     <button onClick={() => SetShow(!show)} className="absolute right-10 top-[230px] text-xl">
                         {show ? <FaEyeSlash /> : <FaEye />}
                     </button>
-                    <p className='text-[#D1A054] pb-4 text-center text-xl'>Already registered? <Link to='/signup'>Go to Sign Up</Link></p>
+                    <p className='text-yellow-400 pb-4 text-center text-xl'>Already registered? <Link to='/signup'>Go to Sign Up</Link></p>
                     <SocialLogin/>
                 </div>
             </div>

@@ -130,7 +130,7 @@ const SignUp = () => {
                                 <input className="btn bg-gradient-to-r from-[#FFC000] to-[#FF8A00] border-none text-white" type="submit" value="Sign Up" />
                             </div>
                         </form>
-                        <p className='text-[#D1A054] pb-4 text-center text-xl'>Already registered? <Link to='/login'>Go to log in</Link></p>
+                        <p className='text-yellow-400 pb-4 text-center text-xl'>Already registered? <Link to='/login'>Go to log in</Link></p>
                         <SocialLogin/>
                     </div>
                 </div>
