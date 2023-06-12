@@ -50,10 +50,10 @@ const DashBoard = () => {
                                     isActive ? "text-white bg-transparent " : ""
                                 }>My Selected Classes</NavLink></li>
                             <li><NavLink
-                                to='/dashboard/manageusers'
+                                to='/dashboard/paymenthistory'
                                 className={({ isActive }) =>
                                     isActive ? "text-white bg-transparent " : ""
-                                }>Manage Users</NavLink></li>
+                                }>Payment History</NavLink></li>
                             </>
                     }
 

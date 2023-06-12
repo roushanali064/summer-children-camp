@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { FaTrash } from "react-icons/fa";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 const BookedClass = () => {
@@ -34,6 +35,8 @@ const BookedClass = () => {
             console.error(err)
         })
     }
+
+    
 
     return (
         <div  className="bg-[#FFF7DF] pt-2 pb-2 rounded">
@@ -76,7 +79,10 @@ const BookedClass = () => {
                                 </td>
                                 <td className="text-right">{bookedClass?.price}</td>
                                 <td>
-                                    <button className="btn bg-gradient-to-r from-[#FFC000] to-[#FF8A00] border-none text-white">Pay</button>
+                                    <Link to='/dashboard/payment' state={{ bookedClass}}>
+                                    <button
+                                        className="btn bg-gradient-to-r from-[#FFC000] to-[#FF8A00] border-none text-white">Pay</button>
+                                    </Link>
                                 </td>
                                 <td>
                                     <button

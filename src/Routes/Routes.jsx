@@ -18,6 +18,8 @@ import AdminRoutes from "./AdminRoutes";
 import ManageUser from "../pages/DashBoard/ManageUser/ManageUser";
 import BookedClass from "../pages/DashBoard/BookedClass/BookedClass";
 import StudentRoute from "./StudentRoute";
+import Payment from "../pages/DashBoard/Payment/Payment";
+import PaymentHistory from "../pages/DashBoard/DashBoard/PaymentHistory/PaymentHistory";
 
   export const router = createBrowserRouter([
     {
@@ -67,6 +69,14 @@ import StudentRoute from "./StudentRoute";
               {
                 path: 'bookedclass',
                 element: <StudentRoute><BookedClass></BookedClass></StudentRoute>
+              },
+              {
+                path: 'payment',
+                element: <Payment></Payment>
+              },
+              {
+                path: 'paymenthistory',
+                element: <StudentRoute><PaymentHistory></PaymentHistory></StudentRoute>
               }
             ]
           }
