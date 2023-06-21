@@ -47,7 +47,7 @@ const PaymentHistory = () => {
                                 <td>
                                     {history.instructor}
                                 </td>
-                                <td className="text-right">{history?.price}</td>
+                                <td className="text-right">${history?.price}</td>
                             </tr>)
                         }
                     </tbody>

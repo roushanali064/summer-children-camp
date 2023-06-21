@@ -21,6 +21,8 @@ import StudentRoute from "./StudentRoute";
 import Payment from "../pages/DashBoard/Payment/Payment";
 import PaymentHistory from "../pages/DashBoard/DashBoard/PaymentHistory/PaymentHistory";
 
+
+
   export const router = createBrowserRouter([
     {
         path: '/',

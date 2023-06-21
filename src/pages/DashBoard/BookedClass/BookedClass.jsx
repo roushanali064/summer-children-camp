@@ -79,7 +79,7 @@ const BookedClass = () => {
                                     <td>
                                         {bookedClass.instructor}
                                     </td>
-                                    <td className="text-right">{bookedClass?.price}</td>
+                                    <td className="text-right">${bookedClass?.price}</td>
                                     <td>
                                         <Link to='/dashboard/payment' state={{ bookedClass }}>
                                             <button
