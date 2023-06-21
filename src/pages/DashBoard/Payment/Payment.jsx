@@ -10,7 +10,7 @@ const Payment = () => {
     const location = useLocation();
     const bookedClass = location.state?.bookedClass
     const price = parseFloat(Math.floor(bookedClass.price))
-    console.log(bookedClass)
+    
     return (
         <div className="w-1/2 mx-auto ml-60 bg-[#FFF7DF] text-xl p-10">
             <h3 className="text-center">Make Payment</h3>

@@ -2,7 +2,7 @@ import useUser from "../hooks/useUser";
 
 
 const ClassesCard = ({ singleClass, handleSelectClass }) => {
-    const { name, image, enrolled, instructor, availableSeats } = singleClass;
+    const { name, image, enrolled, instructor, availableSeats, price } = singleClass;
 
     const [userType] = useUser();
     const isAdminOrInstructor = userType?.role === 'admin' || userType?.role === 'instructor'
@@ -15,6 +15,7 @@ const ClassesCard = ({ singleClass, handleSelectClass }) => {
                 <div className="card-body text-white">
                     <h2 className="card-title text-xl"><span className="text-xl font-bold">Course Name:</span> {name}</h2>
                     <p className="text-xl"><span className="text-xl font-bold">instructor:</span> {instructor}</p>
+                    <p className="text-xl"><span className="text-xl font-bold">price:</span> {price}</p>
                     <p className="text-xl"><span className="text-xl font-bold">Available Seats:</span> {availableSeats}</p>
                     <p className="text-xl"><span className="text-xl font-bold">Enrolled By:</span> {enrolled}</p>
                 </div>

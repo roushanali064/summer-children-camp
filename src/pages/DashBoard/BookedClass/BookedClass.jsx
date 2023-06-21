@@ -8,9 +8,9 @@ import { Link } from "react-router-dom";
 
 
 const BookedClass = () => {
-    const {user} = useContext(AuthContext)
-    
-    const {data:BookedClasses=[], refetch} = useQuery({
+    const { user } = useContext(AuthContext)
+
+    const { data: BookedClasses = [], refetch } = useQuery({
         queryKey: ['BookedClasses', user?.email],
         queryFn: async () => {
             const res = await fetch(`https://summer-children-camp-server.vercel.app/booked/class/${user?.email}`)
@@ -18,83 +18,91 @@ const BookedClass = () => {
         }
     })
 
-    const handleDelete = id =>{
+    const handleDelete = id => {
         console.log(id)
         axios.delete(`https://summer-children-camp-server.vercel.app/booked/class/${id}`)
-        .then(res=>{
-            refetch()
-            if(res.data.deletedCount === 1){
-                Swal.fire(
-                    'Class Deny Successfully!',
-                    'You clicked the button!',
-                    'success'
-                )
-            }
-        })
-        .catch(err=>{
-            console.error(err)
-        })
+            .then(res => {
+                refetch()
+                if (res.data.deletedCount === 1) {
+                    Swal.fire(
+                        'Class Delete Successfully!',
+                        'You clicked the button!',
+                        'success'
+                    )
+                }
+            })
+            .catch(err => {
+                console.error(err)
+            })
     }
 
-    
+
 
     return (
-        <div  className="bg-[#FFF7DF] pt-2 pb-2 rounded">
-            <h2 className="text-transparent text-5xl font-extrabold bg-gradient-to-r from-[#FF8A00] to-[#FFC000] bg-clip-text text-center pb-2">My Selected Class</h2>
-            <div className="overflow-x-auto pt-5">
-                <table className="table">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Image & Name</th>
-                            <th> Instructor name</th>
-                            <th>Price</th>
-                            <th>Action</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            BookedClasses.map((bookedClass, index) => <tr
-                                key={bookedClass._id}
-                            >
-                                <td>
-                                    {index + 1}
-                                </td>
-                                <td>
-                                    <div className="flex items-center space-x-3">
-                                        <div className="avatar">
-                                            <div className="mask mask-squircle w-12 h-12">
-                                                <img src={bookedClass.image} alt="class img" />
+        <div className="bg-[#FFF7DF] p-4 rounded-xl">
+            {
+                BookedClasses.length > 0 ? <>
+                <h2 className="text-transparent text-5xl font-extrabold bg-gradient-to-r from-[#FF8A00] to-[#FFC000] bg-clip-text text-center pb-2">My Selected Class</h2>
+                <div className="overflow-x-auto pt-5">
+                    <table className="table">
+                        {/* head */}
+                        <thead>
+                            <tr className="text-2xl font-bold text-black">
+                                <th>#</th>
+                                <th>Image & Name</th>
+                                <th> Instructor name</th>
+                                <th>Price</th>
+                                <th>Action</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody className="text-xl font-semibold">
+                            {
+                                BookedClasses.map((bookedClass, index) => <tr
+                                    key={bookedClass._id}
+                                >
+                                    <td>
+                                        {index + 1}
+                                    </td>
+                                    <td>
+                                        <div className="flex items-center space-x-3">
+                                            <div className="avatar">
+                                                <div className="mask mask-squircle w-12 h-12">
+                                                    <img src={bookedClass.image} alt="class img" />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div className="font-bold">{bookedClass.name}</div>
                                             </div>
                                         </div>
-                                        <div>
-                                            <div className="font-bold">{bookedClass.name}</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    {bookedClass.instructor}
-                                </td>
-                                <td className="text-right">{bookedClass?.price}</td>
-                                <td>
-                                    <Link to='/dashboard/payment' state={{ bookedClass}}>
-                                    <button
-                                        className="btn bg-gradient-to-r from-[#FFC000] to-[#FF8A00] border-none text-white">Pay</button>
-                                    </Link>
-                                </td>
-                                <td>
-                                    <button
-                                        onClick={()=>handleDelete(bookedClass?._id)} 
-                                        className="btn bg-gradient-to-r from-[#FFC000] to-[#FF8A00] border-none text-white"><FaTrash/></button>
-                                </td>
-                                
-                            </tr>)
-                        }
-                    </tbody>
-                </table>
-            </div>
+                                    </td>
+                                    <td>
+                                        {bookedClass.instructor}
+                                    </td>
+                                    <td className="text-right">{bookedClass?.price}</td>
+                                    <td>
+                                        <Link to='/dashboard/payment' state={{ bookedClass }}>
+                                            <button
+                                                className="btn bg-gradient-to-r from-[#FFC000] to-[#FF8A00] border-none text-white">Pay</button>
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <button
+                                            onClick={() => handleDelete(bookedClass?._id)}
+                                            className="btn bg-gradient-to-r from-[#FFC000] to-[#FF8A00] border-none text-white"><FaTrash /></button>
+                                    </td>
+
+                                </tr>)
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </> :
+            <>
+            <h3 className="text-3xl font-extrabold text-orange-500 px-10 pt-4 text-center">No Selected Class</h3>
+            </>
+            }
+            
         </div>
     );
 };
